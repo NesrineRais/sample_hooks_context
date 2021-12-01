@@ -1,24 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
 
+import React, { useState } from 'react';
+import Profile from './components/Profile';
+import { UserContext, ColorContext } from './contexts/myprofile';
 function App() {
+  const [user] = useState({ name: "Lisa", age: 8 })
+  console.log(user)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserContext.Provider value={user}>
+      <ColorContext.Provider value={'red'} >
+        <Profile />
+      </ColorContext.Provider>
+    </UserContext.Provider>
   );
 }
 
